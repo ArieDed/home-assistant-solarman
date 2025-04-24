@@ -9,25 +9,19 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 from homeassistant.components.sensor import (
     SensorEntity,
-    STATE_CLASS_MEASUREMENT,
-    STATE_CLASS_TOTAL_INCREASING,
+    SensorStateClass,
+    SensorDeviceClass,
 )
 from homeassistant.const import (
-    DEVICE_CLASS_VOLTAGE,
-    DEVICE_CLASS_CURRENT,
-    DEVICE_CLASS_POWER,
-    DEVICE_CLASS_TEMPERATURE,
     # DEVICE_CLASS_FREQUENCY,
-    DEVICE_CLASS_ENERGY,
     # DEVICE_CLASS_TIME,
-    ELECTRIC_POTENTIAL_VOLT,
-    ELECTRIC_CURRENT_AMPERE,
-    POWER_WATT,
-    TEMP_CELSIUS,
-    FREQUENCY_HERTZ,
-    ENERGY_WATT_HOUR,
-    ENERGY_KILO_WATT_HOUR,
-    TIME_HOURS,
+    UnitOfElectricPotential,
+    UnitOfElectricCurrent,
+    UnitOfPower,
+    UnitOfTemperature,
+    UnitOfFrequency,
+    UnitOfEnergy,
+    UnitOfTime,
 )
 
 from .const import (
@@ -55,54 +49,54 @@ async def async_setup_entry(
     sensors.append(
         SolarMANSensor(
             SENSOR_VDC1,
-            DEVICE_CLASS_VOLTAGE,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_POTENTIAL_VOLT,
+            SensorDeviceClass.VOLTAGE,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricPotential.VOLT,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_IDC1,
-            DEVICE_CLASS_CURRENT,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_CURRENT_AMPERE,
+            SensorDeviceClass.CURRENT,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricCurrent.AMPERE,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_VDC2,
-            DEVICE_CLASS_VOLTAGE,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_POTENTIAL_VOLT,
+            SensorDeviceClass.VOLTAGE,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricPotential.VOLT,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_IDC2,
-            DEVICE_CLASS_CURRENT,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_CURRENT_AMPERE,
+            SensorDeviceClass.CURRENT,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricCurrent.AMPERE,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_VAC,
-            DEVICE_CLASS_VOLTAGE,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_POTENTIAL_VOLT,
+            SensorDeviceClass.VOLTAGE,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricPotential.VOLT,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_IAC,
-            DEVICE_CLASS_CURRENT,
-            STATE_CLASS_MEASUREMENT,
-            ELECTRIC_CURRENT_AMPERE,
+            SensorDeviceClass.CURRENT,
+            SensorStateClass.MEASUREMENT,
+            UnitOfElectricCurrent.AMPERE,
             entry.unique_id,
         )
     )
@@ -110,44 +104,44 @@ async def async_setup_entry(
         SolarMANSensor(
             SENSOR_FREQ,
             None,
-            STATE_CLASS_MEASUREMENT,
-            FREQUENCY_HERTZ,
+            SensorStateClass.MEASUREMENT,
+            UnitOfFrequency.HERTZ,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_TEMP,
-            DEVICE_CLASS_TEMPERATURE,
-            STATE_CLASS_TOTAL_INCREASING,
-            TEMP_CELSIUS,
+            SensorDeviceClass.TEMPERATURE,
+            SensorStateClass.TOTAL_INCREASING,
+            UnitOfTemperature.CELSIUS,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_PWR,
-            DEVICE_CLASS_POWER,
-            STATE_CLASS_MEASUREMENT,
-            POWER_WATT,
+            SensorDeviceClass.POWER,
+            SensorStateClass.MEASUREMENT,
+            UnitOfPower.WATT,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_ENERGY_DAY,
-            DEVICE_CLASS_ENERGY,
-            STATE_CLASS_TOTAL_INCREASING,
-            ENERGY_WATT_HOUR,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.TOTAL_INCREASING,
+            UnitOfEnergy.WATT_HOUR,
             entry.unique_id,
         )
     )
     sensors.append(
         SolarMANSensor(
             SENSOR_ENERGY_TOT,
-            DEVICE_CLASS_ENERGY,
-            STATE_CLASS_TOTAL_INCREASING,
-            ENERGY_KILO_WATT_HOUR,
+            SensorDeviceClass.ENERGY,
+            SensorStateClass.TOTAL_INCREASING,
+            UnitOfEnergy.KILO_WATT_HOUR,
             entry.unique_id,
         )
     )
@@ -155,8 +149,8 @@ async def async_setup_entry(
         SolarMANSensor(
             SENSOR_HRS,
             None,
-            STATE_CLASS_TOTAL_INCREASING,
-            TIME_HOURS,
+            SensorStateClass.TOTAL_INCREASING,
+            UnitOfTime.HOURS,
             entry.unique_id,
         )
     )
